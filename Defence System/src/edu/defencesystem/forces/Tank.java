@@ -44,6 +44,7 @@ public class Tank extends javax.swing.JFrame {
         jSpinner2 = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Tank");
         setPreferredSize(new java.awt.Dimension(585, 322));
 
         jLabel1.setText("Area Not Cleared");

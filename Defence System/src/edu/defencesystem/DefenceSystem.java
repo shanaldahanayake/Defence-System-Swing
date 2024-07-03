@@ -4,6 +4,11 @@
  */
 package edu.defencesystem;
 
+import edu.defencesystem.forces.Helicopter;
+import edu.defencesystem.forces.Submarine;
+import edu.defencesystem.forces.Tank;
+import edu.defencesystem.mainControl.ControlRoom;
+
 /**
  *
  * @author Dahanayake
@@ -15,6 +20,7 @@ public class DefenceSystem {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        new ControlRoom().setVisible(true);
     }
     
 }
