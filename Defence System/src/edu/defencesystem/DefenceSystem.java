@@ -20,7 +20,10 @@ public class DefenceSystem {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        new ControlRoom().setVisible(true);
+        ControlRoom controlRoom=new ControlRoom();
+        controlRoom.setSubmarine(new Submarine(controlRoom));
+        controlRoom.setHelicopter(new Helicopter(controlRoom));
+        controlRoom.setTank(new Tank(controlRoom));
     }
     
 }

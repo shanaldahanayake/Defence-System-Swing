@@ -4,6 +4,10 @@
  */
 package edu.defencesystem.forces;
 
+import edu.defencesystem.mainControl.ControlRoom;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  *
  * @author Dahanayake
@@ -13,8 +17,10 @@ public class Submarine extends javax.swing.JFrame {
     /**
      * Creates new form Submarine
      */
-    public Submarine() {
+    public Submarine(ControlRoom controlRoom) {
         initComponents();
+        setVisible(true);
+        this.controlroom=controlRoom;
     }
 
     /**
@@ -34,7 +40,7 @@ public class Submarine extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtInboxSub = new javax.swing.JTextArea();
         txtSendSub = new javax.swing.JTextField();
-        btnSnedSub = new javax.swing.JButton();
+        btnSendSub = new javax.swing.JButton();
         sliderEnSub = new javax.swing.JSlider();
         sliderOxySub = new javax.swing.JSlider();
         jLabel2 = new javax.swing.JLabel();
@@ -63,7 +69,12 @@ public class Submarine extends javax.swing.JFrame {
         txtInboxSub.setRows(5);
         jScrollPane1.setViewportView(txtInboxSub);
 
-        btnSnedSub.setText("Send");
+        btnSendSub.setText("Send");
+        btnSendSub.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendSubActionPerformed(evt);
+            }
+        });
 
         sliderEnSub.setMajorTickSpacing(10);
         sliderEnSub.setOrientation(javax.swing.JSlider.VERTICAL);
@@ -135,7 +146,7 @@ public class Submarine extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(txtSendSub, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnSnedSub))
+                                        .addComponent(btnSendSub))
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -184,7 +195,7 @@ public class Submarine extends javax.swing.JFrame {
                         .addGap(18, 38, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtSendSub, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSnedSub))
+                            .addComponent(btnSendSub))
                         .addContainerGap(8, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -196,44 +207,48 @@ public class Submarine extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSendSubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendSubActionPerformed
+        controlroom.setTextAreaSub(txtSendSub.getText());
+    }//GEN-LAST:event_btnSendSubActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Submarine.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Submarine.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Submarine.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Submarine.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Submarine().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(Submarine.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(Submarine.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(Submarine.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(Submarine.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new Submarine().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSendSub;
     private javax.swing.JButton btnShootSub;
-    private javax.swing.JButton btnSnedSub;
     private javax.swing.JButton btnSonarSub;
     private javax.swing.JButton btnTomahawkSub;
     private javax.swing.JButton btnTridentSub;
@@ -252,4 +267,37 @@ public class Submarine extends javax.swing.JFrame {
     private javax.swing.JTextArea txtInboxSub;
     private javax.swing.JTextField txtSendSub;
     // End of variables declaration//GEN-END:variables
+    private ControlRoom controlroom;
+    private String textSub;
+    
+    public void setAreaLableSub(){
+        lblAreaSub.setText(controlroom.isAreaClear()?"Area Is Clear":"Area Is Not Clear");
+    }
+    
+    public void setButtonFunctionsSub(int power){
+        if(power>80){
+            btnTridentSub.setEnabled(true);
+            btnTomahawkSub.setEnabled(true);
+            btnShootSub.setEnabled(true);
+            btnSonarSub.setEnabled(true);
+        }else if(power>60){
+            btnTridentSub.setEnabled(false);
+            btnTomahawkSub.setEnabled(true);
+            btnShootSub.setEnabled(true);
+            btnSonarSub.setEnabled(true);
+        }else if(power>50){
+            btnTridentSub.setEnabled(false);
+            btnTomahawkSub.setEnabled(false);
+            btnShootSub.setEnabled(true);
+            btnSonarSub.setEnabled(true);
+        }else{
+            btnTridentSub.setEnabled(false);
+            btnTomahawkSub.setEnabled(false);
+            btnShootSub.setEnabled(true);
+            btnSonarSub.setEnabled(false);
+        }
+        
+    }
+    
+    
 }
