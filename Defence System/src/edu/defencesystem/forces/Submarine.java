@@ -298,6 +298,8 @@ public class Submarine extends javax.swing.JFrame {
         }
         
     }
-    
+    public void showInboxControl(String text){
+        txtInboxSub.append(text);
+    }
     
 }

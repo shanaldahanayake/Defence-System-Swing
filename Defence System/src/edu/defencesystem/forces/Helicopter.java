@@ -61,7 +61,6 @@ public class Helicopter extends javax.swing.JFrame {
         txtInboxHeli.setRows(5);
         jScrollPane1.setViewportView(txtInboxHeli);
 
-        txtSendHeli.setText("jTextField1");
         txtSendHeli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSendHeliActionPerformed(evt);
@@ -253,6 +252,9 @@ public class Helicopter extends javax.swing.JFrame {
             btnShootHeli.setEnabled(true);
         }
         
+    }
+    public void showInboxControl(String text){
+        txtInboxHeli.append(text);
     }
 
 }

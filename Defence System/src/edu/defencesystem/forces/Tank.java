@@ -36,7 +36,7 @@ public class Tank extends javax.swing.JFrame {
         btnRedarTank = new javax.swing.JButton();
         btnRotateTank = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtInboxTank = new javax.swing.JTextArea();
         txtSendTank = new javax.swing.JTextField();
         btnSnedTank = new javax.swing.JButton();
         sliderTank = new javax.swing.JSlider();
@@ -61,11 +61,9 @@ public class Tank extends javax.swing.JFrame {
 
         btnRotateTank.setText("Rotate Shooting");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        txtSendTank.setText("jTextField1");
+        txtInboxTank.setColumns(20);
+        txtInboxTank.setRows(5);
+        jScrollPane1.setViewportView(txtInboxTank);
 
         btnSnedTank.setText("Send");
         btnSnedTank.addActionListener(new java.awt.event.ActionListener() {
@@ -219,9 +217,9 @@ public class Tank extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lblAreaTank;
     private javax.swing.JSlider sliderTank;
+    private javax.swing.JTextArea txtInboxTank;
     private javax.swing.JTextField txtSendTank;
     // End of variables declaration//GEN-END:variables
     private ControlRoom controlRoom;
@@ -253,5 +251,8 @@ public class Tank extends javax.swing.JFrame {
             btnShootTank.setEnabled(true);
         }
         
+    }
+    public void showInboxControl(String text){
+        txtInboxTank.append(text);
     }
 }
