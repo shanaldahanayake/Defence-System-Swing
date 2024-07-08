@@ -9,5 +9,7 @@ package edu.defencesystem.mainControl;
  * @author Dahanayake
  */
 public interface Observable {
-    
+    void setButtonFunctions(int power);
+    void inboxFromControl(String text);
+    void areaLabel(boolean status);
 }

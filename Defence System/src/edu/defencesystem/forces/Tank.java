@@ -5,20 +5,21 @@
 package edu.defencesystem.forces;
 
 import edu.defencesystem.mainControl.ControlRoom;
+import edu.defencesystem.mainControl.Observable;
 
 /**
  *
  * @author Dahanayake
  */
-public class Tank extends javax.swing.JFrame {
+public class Tank extends SuperDefence implements Observable{
 
     /**
      * Creates new form Tank
      */
-    public Tank(ControlRoom controlRoom) {
+    public Tank() {
         initComponents();
         setVisible(true);
-        this.controlRoom=controlRoom;
+        
     }
 
     /**
@@ -165,11 +166,11 @@ public class Tank extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/*
     private void btnSnedTankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSnedTankActionPerformed
         controlRoom.setTextAreaTank(txtSendTank.getText());        // TODO add your handling code here:
     }//GEN-LAST:event_btnSnedTankActionPerformed
-
+*/
     /**
      * @param args the command line arguments
      */
@@ -224,11 +225,11 @@ public class Tank extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     private ControlRoom controlRoom;
     
-    public void setAreaLabelTank(){
-        lblAreaTank.setText(controlRoom.isAreaClear()?"Area Is Clear":"Area Is Not Clear");
+    public void areaLabel(boolean status){
+        lblAreaTank.setText(status?"Area Is Clear":"Area Is Not Clear");
     }
     
-    public void setButtonFunctionsTank(int power){
+    public void setButtonFunctions(int power){
         if(power>80){
             btnRotateTank.setEnabled(true);
             btnRedarTank.setEnabled(true);
@@ -252,7 +253,7 @@ public class Tank extends javax.swing.JFrame {
         }
         
     }
-    public void showInboxControl(String text){
-        txtInboxTank.append(text);
+    public void inboxFromControl(String text){
+        txtInboxTank.append(text+"\n");
     }
 }

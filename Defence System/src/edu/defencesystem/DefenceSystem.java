@@ -6,8 +6,10 @@ package edu.defencesystem;
 
 import edu.defencesystem.forces.Helicopter;
 import edu.defencesystem.forces.Submarine;
+import edu.defencesystem.forces.SuperDefence;
 import edu.defencesystem.forces.Tank;
 import edu.defencesystem.mainControl.ControlRoom;
+
 
 /**
  *
@@ -20,10 +22,12 @@ public class DefenceSystem {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        ControlRoom controlRoom=new ControlRoom();
-        controlRoom.setSubmarine(new Submarine(controlRoom));
-        controlRoom.setHelicopter(new Helicopter(controlRoom));
-        controlRoom.setTank(new Tank(controlRoom));
+        SuperDefence superD=new SuperDefence();
+        superD.superDefenceObserver(new Helicopter());
+        superD.superDefenceObserver(new Tank());
+        superD.superDefenceObserver(new Submarine());
+        
+        ControlRoom ctr=new ControlRoom(superD);
     }
     
 }

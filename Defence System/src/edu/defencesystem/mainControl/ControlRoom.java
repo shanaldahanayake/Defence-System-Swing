@@ -16,14 +16,15 @@ import javax.swing.JTextField;
  *
  * @author Dahanayake
  */
-public class ControlRoom extends javax.swing.JFrame {
+public class ControlRoom extends javax.swing.JFrame{
 
     /**
      * Creates new form ControlRoom
      */
-    public ControlRoom() {
+    public ControlRoom(SuperDefence superD) {
         initComponents();
         setVisible(true);
+        this.superD=superD;
     }
 
     /**
@@ -244,69 +245,52 @@ public class ControlRoom extends javax.swing.JFrame {
 
     private void sliderControlRoomStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderControlRoomStateChanged
        int power=sliderControlRoom.getValue();
-       submarine.setButtonFunctionsSub(power);
-       helicopter.setButtonFunctionsHeli(power);
-       tank.setButtonFunctionsTank(power);
-        
-        
+       superD.setPower(power);   
     }//GEN-LAST:event_sliderControlRoomStateChanged
 
     private void chbControlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbControlActionPerformed
-        if(chbControl.isSelected()){
-            status=true;
-            submarine.setAreaLableSub();
-            helicopter.setAreaLabelHeli();
-            tank.setAreaLabelTank();
-        }else{
-            status=false;
-            submarine.setAreaLableSub();
-            helicopter.setAreaLabelHeli();
-            tank.setAreaLabelTank();
-        }
         
+        superD.setAreaFromControl(chbControl.isSelected());  
     }//GEN-LAST:event_chbControlActionPerformed
 
     private void btnSendControlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendControlActionPerformed
-        
-        submarine.showInboxControl(txtSendControl.getText());
-        helicopter.showInboxControl(txtSendControl.getText());
-        tank.showInboxControl(txtSendControl.getText());
+        superD.setInboxFromControl(txtSendControl.getText());
     }//GEN-LAST:event_btnSendControlActionPerformed
     
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ControlRoom.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ControlRoom.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ControlRoom.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ControlRoom.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ControlRoom().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(ControlRoom.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(ControlRoom.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(ControlRoom.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(ControlRoom.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new ControlRoom().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSendControl;
@@ -339,20 +323,10 @@ public class ControlRoom extends javax.swing.JFrame {
     private Submarine submarine;
     private Helicopter helicopter;
     private Tank tank;
+    private SuperDefence superD;
     private boolean status;
     
-    public void setSubmarine(Submarine submarine){
-        this.submarine=submarine;
-    }
-    public void setHelicopter(Helicopter helicopter){
-        this.helicopter=helicopter;
-    }
-    public void setTank(Tank tank){
-        this.tank=tank;
-    }
-    public boolean isAreaClear(){
-        return status;
-    }
+    
     
     public void setTextAreaSub(String text){
         txtAreaSub.append(text+"\n");
@@ -362,5 +336,5 @@ public class ControlRoom extends javax.swing.JFrame {
     }
     public void setTextAreaTank(String text){
         txtAreaTank.append(text+"\n");
-    }
+    } 
 }

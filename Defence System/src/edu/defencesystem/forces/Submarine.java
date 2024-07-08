@@ -5,6 +5,7 @@
 package edu.defencesystem.forces;
 
 import edu.defencesystem.mainControl.ControlRoom;
+import edu.defencesystem.mainControl.Observable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,15 +13,15 @@ import java.util.Set;
  *
  * @author Dahanayake
  */
-public class Submarine extends javax.swing.JFrame {
+public class Submarine extends SuperDefence implements Observable{
 
     /**
      * Creates new form Submarine
      */
-    public Submarine(ControlRoom controlRoom) {
+    public Submarine() {
         initComponents();
         setVisible(true);
-        this.controlroom=controlRoom;
+        
     }
 
     /**
@@ -206,11 +207,11 @@ public class Submarine extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/*
     private void btnSendSubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendSubActionPerformed
         controlroom.setTextAreaSub(txtSendSub.getText());
     }//GEN-LAST:event_btnSendSubActionPerformed
-
+*/
     /**
      * @param args the command line arguments
      */
@@ -270,11 +271,11 @@ public class Submarine extends javax.swing.JFrame {
     private ControlRoom controlroom;
     private String textSub;
     
-    public void setAreaLableSub(){
-        lblAreaSub.setText(controlroom.isAreaClear()?"Area Is Clear":"Area Is Not Clear");
+    public void areaLabel(boolean status){
+        lblAreaSub.setText(status?"Area Is Clear":"Area Is Not Clear");
     }
     
-    public void setButtonFunctionsSub(int power){
+    public void setButtonFunctions(int power){
         if(power>80){
             btnTridentSub.setEnabled(true);
             btnTomahawkSub.setEnabled(true);
@@ -298,8 +299,10 @@ public class Submarine extends javax.swing.JFrame {
         }
         
     }
-    public void showInboxControl(String text){
-        txtInboxSub.append(text);
+    
+    public void inboxFromControl(String text){
+        txtInboxSub.append(text+"\n");
     }
+
     
 }

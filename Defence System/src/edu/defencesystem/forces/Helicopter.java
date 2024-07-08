@@ -5,20 +5,20 @@
 package edu.defencesystem.forces;
 
 import edu.defencesystem.mainControl.ControlRoom;
+import edu.defencesystem.mainControl.Observable;
 
-/**
- *
+/*
  * @author Dahanayake
  */
-public class Helicopter extends javax.swing.JFrame {
+public class Helicopter extends SuperDefence implements Observable{
 
     /**
      * Creates new form Helicopter
      */
-    public Helicopter(ControlRoom controlRoom) {
+    public Helicopter() {
         initComponents();
         setVisible(true);
-        this.controlRoom=controlRoom;
+        
     }
 
     /**
@@ -165,7 +165,7 @@ public class Helicopter extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/*
     private void txtSendHeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSendHeliActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSendHeliActionPerformed
@@ -177,7 +177,7 @@ public class Helicopter extends javax.swing.JFrame {
     private void btnSendHeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendHeliActionPerformed
         controlRoom.setTextAreaHeli(txtSendHeli.getText());
     }//GEN-LAST:event_btnSendHeliActionPerformed
-
+*/
     /**
      * @param args the command line arguments
      */
@@ -233,11 +233,11 @@ public class Helicopter extends javax.swing.JFrame {
     
     private ControlRoom controlRoom;
     
-    public void setAreaLabelHeli(){
-        lblAreaHeli.setText(controlRoom.isAreaClear()?"Area Is Clear":"Area Is Not Clear");
+    public void areaLabel(boolean status){
+        lblAreaHeli.setText(status?"Area Is Clear":"Area Is Not Clear");
     }
-    
-    public void setButtonFunctionsHeli(int power){
+   
+    public void setButtonFunctions(int power){
         if(power>80){
             btnLaserHeli.setEnabled(true);
             btnMissileHeli.setEnabled(true);
@@ -253,8 +253,8 @@ public class Helicopter extends javax.swing.JFrame {
         }
         
     }
-    public void showInboxControl(String text){
-        txtInboxHeli.append(text);
+    public void inboxFromControl(String text){
+        txtInboxHeli.append(text+"\n");
     }
 
 }
