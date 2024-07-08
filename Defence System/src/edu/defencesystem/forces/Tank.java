@@ -16,9 +16,10 @@ public class Tank extends SuperDefence implements Observable{
     /**
      * Creates new form Tank
      */
-    public Tank() {
+    public Tank(ControlRoom controlroom) {
         initComponents();
         setVisible(true);
+        this.controlRoom=controlroom;
         
     }
 
@@ -166,11 +167,11 @@ public class Tank extends SuperDefence implements Observable{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-/*
+
     private void btnSnedTankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSnedTankActionPerformed
         controlRoom.setTextAreaTank(txtSendTank.getText());        // TODO add your handling code here:
     }//GEN-LAST:event_btnSnedTankActionPerformed
-*/
+
     /**
      * @param args the command line arguments
      */

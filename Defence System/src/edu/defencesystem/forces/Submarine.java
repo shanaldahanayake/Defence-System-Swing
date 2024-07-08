@@ -18,9 +18,10 @@ public class Submarine extends SuperDefence implements Observable{
     /**
      * Creates new form Submarine
      */
-    public Submarine() {
+    public Submarine(ControlRoom controlroom) {
         initComponents();
         setVisible(true);
+        this.controlroom=controlroom;
         
     }
 
@@ -207,11 +208,11 @@ public class Submarine extends SuperDefence implements Observable{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-/*
+
     private void btnSendSubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendSubActionPerformed
         controlroom.setTextAreaSub(txtSendSub.getText());
     }//GEN-LAST:event_btnSendSubActionPerformed
-*/
+
     /**
      * @param args the command line arguments
      */

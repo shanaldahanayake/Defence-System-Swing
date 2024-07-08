@@ -23,11 +23,13 @@ public class DefenceSystem {
     public static void main(String[] args) {
         // TODO code application logic here
         SuperDefence superD=new SuperDefence();
-        superD.superDefenceObserver(new Helicopter());
-        superD.superDefenceObserver(new Tank());
-        superD.superDefenceObserver(new Submarine());
-        
         ControlRoom ctr=new ControlRoom(superD);
+        
+        superD.superDefenceObserver(new Helicopter(ctr));
+        superD.superDefenceObserver(new Tank(ctr));
+        superD.superDefenceObserver(new Submarine(ctr));
+        
+        
     }
     
 }

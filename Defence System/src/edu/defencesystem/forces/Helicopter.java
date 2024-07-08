@@ -15,9 +15,10 @@ public class Helicopter extends SuperDefence implements Observable{
     /**
      * Creates new form Helicopter
      */
-    public Helicopter() {
+    public Helicopter(ControlRoom controlRoom) {
         initComponents();
         setVisible(true);
+        this.controlRoom=controlRoom;
         
     }
 
@@ -165,7 +166,7 @@ public class Helicopter extends SuperDefence implements Observable{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-/*
+
     private void txtSendHeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSendHeliActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSendHeliActionPerformed
@@ -177,7 +178,7 @@ public class Helicopter extends SuperDefence implements Observable{
     private void btnSendHeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendHeliActionPerformed
         controlRoom.setTextAreaHeli(txtSendHeli.getText());
     }//GEN-LAST:event_btnSendHeliActionPerformed
-*/
+
     /**
      * @param args the command line arguments
      */
